@@ -3,8 +3,8 @@ function App() {
   return (
     <div className="App">
       <div className='contanier'>
-        <Weather/>
-      <p> This project is coded by <a href="#" alt="">Gugulethu Mdlui</a>and is  <a href='#' alt="" >Open sourced on Github</a></p>
+        <Weather defaultCity="New york"/>
+      <p> This project is coded by <a href="https://jolly-froyo-f31260.netlify.app/" alt="">Gugulethu Mdlui</a>and is  <a href='https://github.com/GMDLULI/react-weather-app' alt="" >Open sourced on Github</a></p>
       </div>
      
     </div>

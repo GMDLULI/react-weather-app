@@ -2,4 +2,28 @@
     margin:10px;
     padding: 8px;
     border-color: 1px, solid, #101011 !important;
+    color: rgb(88, 85, 85)
+}
+.weather h1{
+    padding: 10px;
+}
+
+.weather ul{
+    list-style-type: none;
+}
+
+.description {
+    padding: 9px;
+}
+
+.temparature{
+    position: relative;
+    top: 10px;
+    padding: 10px;
+    font-size: 40px;
+    font-weight: 500;
+}
+.units {
+    position: relative;
+    bottom: 10px;
 }
