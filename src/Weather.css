@@ -18,12 +18,12 @@
 
 .temparature{
     position: relative;
-    top: 10px;
+    top: 15px;
     padding: 10px;
     font-size: 40px;
     font-weight: 500;
 }
 .units {
     position: relative;
-    bottom: 10px;
+    bottom: 6px;
 }
