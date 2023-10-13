@@ -1,6 +1,10 @@
 body {
+  background-color: blue;
   margin: 0;
   font-family: arial,sans-serif;
+  max-width: 50%;
+  position: relative;
+  left: 500px;
 }
 
 code {

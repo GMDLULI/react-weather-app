@@ -1,26 +1,58 @@
-import React,  {useState} from "react";
+import React,  {useState, useEffect} from "react";
 import "./WeatherForcast.css"
 import axios from "axios"
+import WeatherForcastDay from "./WeatherForcastDay";
 
 export default function WeatherForcast(props){
-    function handleforcast(response){
-        console.log(response.data)
-    }
-   
-    // let lat = props.data.coordinates.longitude
-    // let lon = props.data.coordinates.latitude
-    let apikey="68ed940b3b921df8ccf6e6331of75tba"
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.data.city}&key=${apikey}`
-    axios.get(apiUrl).then(handleforcast)
+    let [loaded, setLoaded] = useState(false)
+    let [forecast, setForcast] = useState(null)
 
-    return (
-        <div className="WeatherForcast">
-            <div className="WeatherForcast-Day">Thu</div>
-            <div ><img className="WeatherForcsat-Icon" src={props.data.icon_url} alt={props.data.icon}/></div>
-            <div className="WeatherForcast-temp">
-                <span className="maximum-temp">19°</span>
-                <span className="minimum-temp">10°</span>
-            </div>
-        </div>
-    )
+    useEffect(() => {
+        setLoaded(false);
+    }, [props.data.city])
+    function handleforcast(response) {
+        setForcast(response.data.daily)
+        setLoaded(true);
+    }
+  
+
+    if (loaded){
+        //console.log(forecast)
+        return (
+            <div className="WeatherForcast">
+                <div className="row">
+                    {forecast.map(function(dailForcast, index){
+                        if (index < 5) {
+                            return (
+                                <div className="col" key={index}>
+                                    <WeatherForcastDay forcast={dailForcast}/>
+                                </div>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
+                    {/* <div className="col">
+                        <WeatherForcastDay forcast={forcast[0]}/>
+                    </div>
+                    <div className="col">
+                        <WeatherForcastDay forcast={forcast[1]}/>
+                    </div>
+                    <div className="col">
+                        <WeatherForcastDay forcast={forcast[2]}/>
+                    </div>
+                    <div className="col">
+                        <WeatherForcastDay forcast={forcast[3]}/>
+                    </div>
+                    <div className="col">
+                        <WeatherForcastDay forcast={forcast[4]}/>
+                    </div> */}
+                </div>
+            </div>)
+    } else {
+        let apikey="68ed940b3b921df8ccf6e6331of75tba"
+        let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.data.city}&key=${apikey}`
+        axios.get(apiUrl).then(handleforcast)
+        return null;
+    }
 }

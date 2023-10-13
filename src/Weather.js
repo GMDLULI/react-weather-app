@@ -9,7 +9,7 @@ export default function Weather(props){
     const[city, setCity] = useState(props.defaultCity)
 
     function handleResponse(response){
-        console.log(response.data)
+        //console.log(response.data)
         setWeatherData({
             ready: true, 
             coordinates: response.data.coordinates,
@@ -40,33 +40,15 @@ export default function Weather(props){
     }
     if (weatherData.ready){
     return (
-        <div className="weather border rounded">
+        <div className="weather border shadow p-3 mb-5 bg-white rounded">
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col-9"><input type="search" placeholder="Enter a city .." className="form-control" onChange={handleCityChange}/></div>
-                   <div className="col-3 "> <input type="submit" value="search" className="btn btn-primary p-2"/></div>
+                   <div className="col-3 "> <input type="submit" value="search" className="btn btn-primary button "/></div>
                 </div>
             </form>
             <WeatherInfo data={weatherData}/>
             <WeatherForcast data={weatherData}/>
-            {/* <h1>New York</h1>
-            <ul className="description">
-                <li>{weatherData.date.getDate()}</li>
-                <li>{weatherData.description}</li>
-            </ul>
-            <div className="row">
-                <div className="col-6">
-                    <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt=""/>
-                    <span className="temparature">6</span><span className="units">°C|°F </span>
-                </div>
-                <div className="col-6">
-                    <ul className="description">
-                        <li>Percepitation: 12%</li>
-                        <li>Humidity: {weatherData.humidity}%</li>
-                        <li>wind: {Math.round(weatherData.wind)}km/h</li>
-                    </ul>
-                </div>
-            </div> */}
         </div>
     );} else{
         search();
